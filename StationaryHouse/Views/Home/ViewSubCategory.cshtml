@@ -1,0 +1,27 @@
+﻿@model IEnumerable<StationaryHouse.Models.SubCategory>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading">(@ViewData["CategoryName"])</h1>
+</div>
+<div class="row" style="margin-bottom:50px;">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 mb-3">
+            <div class="card w-100">
+                <center>
+                    <img src="~/images/subcategory.png" alt="" style="width:100%">
+                </center>
+                <div class="card-body">
+                    <h5 class="card-text">
+                        @item.SubCategoryName
+                    </h5>
+                    <a class="btn btn-success btn-block" asp-action="ViewStationery" asp-route-id="@item.SubCategoryID">View Stationery</a>
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

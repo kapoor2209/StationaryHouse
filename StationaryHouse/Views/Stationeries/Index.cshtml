@@ -1,0 +1,53 @@
+﻿@model IEnumerable<StationaryHouse.Models.Stationery>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="heading text-center">All Stationery Items</h1>
+
+<p>
+    <a asp-action="Create">Add New Stationery</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StationeryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Extension)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SubCategory)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.StationeryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Extension)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubCategory.SubCategoryName)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StationeryID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StationeryID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StationeryID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

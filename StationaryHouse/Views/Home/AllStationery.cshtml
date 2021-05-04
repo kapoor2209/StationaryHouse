@@ -1,0 +1,40 @@
+﻿@model IEnumerable<StationaryHouse.Models.Stationery>
+
+@{
+    ViewData["Title"] = "Stationery Items";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading">All Stationery</h1>
+</div>
+
+<div class="row">
+    @if (Model.Count() == 0)
+    {
+        <h1 class="font1">There is No Stationery.</h1>
+    }
+    else
+    {
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 border-success">
+                    <img src="~/spics/@item.StationeryID@item.Extension" alt="" style="width:100%">
+                    <div class="card-body">
+                        <h4 class="card-title font1">
+                            <p>@Html.DisplayFor(modelItem => item.StationeryName)</p>
+                        </h4>
+                        <h5 class="font2">Price: $ @Html.DisplayFor(modelItem => item.Price)</h5>
+                    </div>
+                    <div class="card-footer">
+                        <p>
+                            <a class="btn btn-success" asp-action="PlaceOrder" asp-route-id="@item.StationeryID">Place Order</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+</div>

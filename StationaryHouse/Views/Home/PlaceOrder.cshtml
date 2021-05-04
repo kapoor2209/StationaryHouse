@@ -1,0 +1,35 @@
+﻿@model StationaryHouse.Models.Order
+@{
+    ViewData["Title"] = "Place Order";
+}
+
+<div class="text-center">
+    <h1 class="display-4 heading">(@ViewData["StationeryName"])</h1>
+    <p>Price: $ @ViewData["Price"]</p>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="PlaceOrder">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+                <input asp-for="StationeryID" type="hidden" value='@ViewData["StationeryID"]' class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Place Order" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,29 @@
+﻿@model StationaryHouse.Models.SubCategory
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1  class="heading text-center">Sub Category Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SubCategoryName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SubCategoryName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.SubCategoryID">Edit</a> |
+    <a asp-action="Index">All Sub Categories</a>
+</div>
